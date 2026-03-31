@@ -367,18 +367,40 @@
         <h2 class="skills__title reveal-item">Tech Stack</h2>
       </div>
 
+      <!-- ① Core Skills ── 3초 안에 핵심 역량 파악 -->
+      <div class="skills__core reveal-item">
+        <p class="skills__core-label">Core Skills</p>
+        <ul class="skills__core-list">
+          <li class="core-pill" data-cat="Frontend">HTML5</li>
+          <li class="core-pill" data-cat="Frontend">CSS3 / SCSS</li>
+          <li class="core-pill" data-cat="Frontend">JavaScript</li>
+          <li class="core-pill" data-cat="Frontend">React</li>
+          <li class="core-pill" data-cat="Design">Figma</li>
+          <li class="core-pill" data-cat="Backend">Java</li>
+          <li class="core-pill" data-cat="Backend">Spring Boot</li>
+        </ul>
+      </div>
+
+      <!-- ② Category Skills ── 상세 역량 확인 -->
       <div class="skills__groups">
+
         <div class="skills__group reveal-item">
           <h3 class="skills__group-title">
             <span class="skills__gnum">01</span>Frontend
           </h3>
           <ul class="skills__list">
-            <li class="skills__item" data-level="expert" data-core="true">HTML5</li>
-            <li class="skills__item" data-level="expert" data-core="true">CSS3 / SCSS</li>
-            <li class="skills__item" data-level="expert" data-core="true">JavaScript (ES6+)</li>
-            <li class="skills__item" data-level="advanced" data-core="true">React</li>
-            <li class="skills__item" data-level="advanced">jQuery</li>
-            <li class="skills__item" data-level="intermediate">JSP · Servlet · Ajax</li>
+            <li class="skills__item" data-level="expert" data-core="true"
+                data-tip="시맨틱 마크업 및 웹 접근성 준수">HTML5</li>
+            <li class="skills__item" data-level="expert" data-core="true"
+                data-tip="SCSS 변수·믹스인, Flexbox/Grid 레이아웃">CSS3 / SCSS</li>
+            <li class="skills__item" data-level="expert" data-core="true"
+                data-tip="비동기 처리, REST API 연동, ES6+ 문법">JavaScript (ES6+)</li>
+            <li class="skills__item" data-level="advanced" data-core="true"
+                data-tip="SPA 개발, 컴포넌트 설계, 상태 관리">React</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="DOM 조작, 이벤트 핸들링, AJAX 처리">jQuery</li>
+            <li class="skills__item" data-level="intermediate"
+                data-tip="서버 렌더링, Servlet 연동, AJAX 통신">JSP · Servlet · Ajax</li>
           </ul>
         </div>
 
@@ -387,12 +409,18 @@
             <span class="skills__gnum">02</span>Design
           </h3>
           <ul class="skills__list">
-            <li class="skills__item" data-level="expert" data-core="true">Figma</li>
-            <li class="skills__item" data-level="expert">Adobe Photoshop</li>
-            <li class="skills__item" data-level="expert">Adobe Illustrator</li>
-            <li class="skills__item" data-level="advanced">UI/UX Design</li>
-            <li class="skills__item" data-level="advanced">Design System</li>
-            <li class="skills__item" data-level="advanced">Zeplin</li>
+            <li class="skills__item" data-level="expert" data-core="true"
+                data-tip="컴포넌트 시스템 설계, 프로토타이핑, 사내 교육 운영">Figma</li>
+            <li class="skills__item" data-level="expert"
+                data-tip="배너·상세페이지·인쇄물 편집 및 합성">Adobe Photoshop</li>
+            <li class="skills__item" data-level="expert"
+                data-tip="브랜드 로고·아이콘·그래픽 제작">Adobe Illustrator</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="사용자 흐름 설계, 와이어프레임, 프로토타이핑">UI/UX Design</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="디자인 토큰, 컴포넌트 라이브러리 구축">Design System</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="레이아웃 핸드오프 및 개발 연동">Zeplin</li>
           </ul>
         </div>
 
@@ -401,12 +429,18 @@
             <span class="skills__gnum">03</span>Backend / DB
           </h3>
           <ul class="skills__list">
-            <li class="skills__item" data-level="intermediate" data-core="true">Java</li>
-            <li class="skills__item" data-level="intermediate" data-core="true">Spring Boot</li>
-            <li class="skills__item" data-level="intermediate">Node.js</li>
-            <li class="skills__item" data-level="intermediate">Oracle · MongoDB</li>
-            <li class="skills__item" data-level="beginner">Spring Security</li>
-            <li class="skills__item" data-level="beginner">Docker · Azure</li>
+            <li class="skills__item" data-level="intermediate" data-core="true"
+                data-tip="객체지향 프로그래밍, 풀스택 개발 기반">Java</li>
+            <li class="skills__item" data-level="intermediate" data-core="true"
+                data-tip="REST API 개발, JPA, 서비스 계층 설계">Spring Boot</li>
+            <li class="skills__item" data-level="intermediate"
+                data-tip="Express 기반 서버 구성 경험">Node.js</li>
+            <li class="skills__item" data-level="intermediate"
+                data-tip="SQL 쿼리 작성, NoSQL 데이터 모델링">Oracle · MongoDB</li>
+            <li class="skills__item" data-level="beginner"
+                data-tip="인증·인가 흐름 이해 및 적용">Spring Security</li>
+            <li class="skills__item" data-level="beginner"
+                data-tip="컨테이너 환경 구성 및 클라우드 배포">Docker · Azure</li>
           </ul>
         </div>
 
@@ -415,16 +449,22 @@
             <span class="skills__gnum">04</span>Tools &amp; Etc.
           </h3>
           <ul class="skills__list">
-            <li class="skills__item" data-level="advanced">Git · GitHub</li>
-            <li class="skills__item" data-level="advanced">Notion · Slack</li>
-            <li class="skills__item" data-level="advanced">Linux · PowerShell</li>
-            <li class="skills__item" data-level="advanced">MeteorJS</li>
-            <li class="skills__item" data-level="expert">일본어 (JLPT N1)</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="버전 관리, PR 리뷰, 협업 워크플로우">Git · GitHub</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="프로젝트 관리, 문서화, 팀 커뮤니케이션">Notion · Slack</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="쉘 스크립트, 서버 기본 운영">Linux · PowerShell</li>
+            <li class="skills__item" data-level="advanced"
+                data-tip="리얼타임 웹 앱 개발 경험">MeteorJS</li>
+            <li class="skills__item" data-level="expert"
+                data-tip="비즈니스 커뮤니케이션 및 문서 작성">일본어 (JLPT N1)</li>
           </ul>
         </div>
-      </div>
 
-      <!-- Certifications -->
+      </div><!-- /skills__groups -->
+
+      <!-- ③ Certifications -->
       <div class="skills__certs reveal-item">
         <span class="skills__certs-label">Certifications</span>
         <div class="skills__certs-row">
@@ -436,6 +476,7 @@
           <span>워드프로세서 실무사 1급</span>
         </div>
       </div>
+
     </section>
 
     <!-- ============================================================
