@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>남세나 — Frontend Developer</title>
+    <title>Sena2026 — Frontend Developer</title>
     <meta
       name="description"
       content="디자인 감각과 기술적 구현력을 갖춘 프론트엔드 개발자 남세나의 포트폴리오"
@@ -28,7 +28,16 @@
   <body>
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
-      <span class="page-loader__text">NS</span>
+      <div class="page-loader__inner">
+        <p class="page-loader__label">Preparing Portfolio</p>
+        <div class="page-loader__gauge" aria-hidden="true">
+          <span class="page-loader__fill" id="pageLoaderFill"></span>
+        </div>
+        <div class="page-loader__meta">
+          <span class="page-loader__name">Nam Sena</span>
+          <span class="page-loader__percent" id="pageLoaderPercent">0%</span>
+        </div>
+      </div>
     </div>
 
     <!-- Custom Cursor -->
@@ -259,25 +268,78 @@
           <p class="projects__header-title">Selected<br /><em>Works</em></p>
         </div>
 
-        <!-- Project 03 -->
-        <!-- Project 03 -->
-        <a
-          href="#projects"
-          class="project project--left reveal-item"
-          aria-label="IBK Paygos 프로젝트 보기"
-        >
+        <!-- Project 01 -->
+        <div class="project project--left reveal-item">
           <div class="project__visual">
             <div class="project__image-wrap">
-              <img
-                src="https://placehold.co/900x650/1a1a1a/444444?text=Paygos"
-                alt="IBK Paygos 정산 및 수출 데이터 관리 시스템"
-                loading="lazy"
-              />
+              <div class="project__image-box">
+                <img
+                  src="/images/ttr.jpg"
+                  alt="천천락 다국어 여행 예약 서비스"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
 
           <div class="project__info">
             <span class="project__index">01</span>
+
+            <h3 class="project__title">천천락 여행 서비스</h3>
+
+            <p class="project__type">다국어 여행 예약 플랫폼 개발</p>
+
+            <p class="project__desc">
+              중국어 · 한국어 · 영어를 지원하는 여행 예약 플랫폼으로, 외국인
+              사용자의 상품 탐색과 예약 흐름을 고려한 사용자 사이트와
+              운영·데이터 관리를 위한 관리자 사이트를 분리 설계했습니다. 두
+              사이트는 동일한 MongoDB 기반 데이터 구조를 공유하도록
+              구성했습니다.
+            </p>
+
+            <p class="project__summary">
+              소규모 팀 환경에서 디자인, 데이터 모델링, 프론트엔드, 백엔드까지
+              전 과정을 직접 수행하며 실제 서비스 운영 구조를 구축한
+              프로젝트입니다.
+            </p>
+            <ul class="project__stack">
+              <li>React</li>
+              <li>Node.js</li>
+              <li>MongoDB</li>
+              <li>JavaScript</li>
+              <li>REST API</li>
+              <li>Multi-language</li>
+            </ul>
+
+            <div class="project__footer">
+              <span>2026</span>
+              <span>Full-Stack Development</span>
+              <a
+                href="https://ddftravel.co.kr/event/kor_2026_s1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project__cta"
+                >Live View →</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Project 02 -->
+        <div class="project project--left reveal-item">
+          <div class="project__visual">
+            <div class="project__image-wrap">
+              <div class="project__image-box">
+                <img
+                  src="/images/paygos.jpg"
+                  alt="IBK Paygos 정산 및 수출 데이터 관리 시스템"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="project__info">
+            <span class="project__index">02</span>
 
             <h3 class="project__title">IBK Paygos</h3>
 
@@ -306,29 +368,34 @@
             <div class="project__footer">
               <span>2025 – 2026</span>
               <span>Frontend · Backend Collaboration</span>
-              <span class="project__cta">View Project →</span>
+              <a
+                href="https://gos.ibk.co.kr/"
+                target="_blank"
+                class="project__cta"
+                >View Project →</a
+              >
             </div>
           </div>
-        </a>
+        </div>
 
-        <!-- Project 01 -->
-        <a
-          href="#projects"
-          class="project project--left reveal-item"
-          aria-label="바로 스탬핑 프로젝트 보기"
-        >
+        <!-- Project 03 -->
+        <div class="project project--left reveal-item">
           <div class="project__visual">
             <div class="project__image-wrap">
-              <img
-                src="https://placehold.co/900x650/1a1a1a/444444?text=바로+스탬핑"
-                alt="바로 스탬핑 — QR 기반 적립 및 쿠폰 시스템"
-                loading="lazy"
-              />
+              <span class="project__award"> Award · 최우수상 </span>
+
+              <div class="project__image-box">
+                <img
+                  src="/images/baro.jpg"
+                  alt="바로 스탬핑 — QR 기반 적립 및 쿠폰 시스템"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div class="project__badge">최우수상 수상</div>
+            <!-- <div class="project__badge">최우수상 수상</div> -->
           </div>
           <div class="project__info">
-            <span class="project__index">02</span>
+            <span class="project__index">03</span>
             <h3 class="project__title">바로 스탬핑</h3>
             <p class="project__type">QR 기반 적립 및 쿠폰 시스템</p>
             <p class="project__desc">
@@ -341,6 +408,9 @@
             <p class="project__summary">
               매장 운영 효율과 고객 리텐션을 동시에 개선할 수 있도록 설계한 AI
               기반 QR 멤버십 서비스입니다.
+            </p>
+            <p class="project__award-desc">
+              서울우먼업 여성개발자 양성과정 데모데이 웹개발 분야 최우수상 수상
             </p>
             <ul class="project__stack">
               <li>React</li>
@@ -355,19 +425,20 @@
             <div class="project__footer">
               <span>2024</span>
               <span>Full-Stack Development</span>
-              <span class="project__cta">View Project →</span>
+              <a
+                href="https://www.youtube.com/watch?v=lpTkeF09z2M"
+                target="_blank"
+                class="project__cta"
+                >View Project →</a
+              >
             </div>
           </div>
-        </a>
+        </div>
 
-        <!-- Project 03 -->
-        <a
-          href="#projects"
-          class="project project--right reveal-item"
-          aria-label="통신사 고객관리 시스템 UI/UX 프로젝트 보기"
-        >
+        <!-- Project 04 -->
+        <div class="project project--right reveal-item">
           <div class="project__info">
-            <span class="project__index">02</span>
+            <span class="project__index">04</span>
 
             <h3 class="project__title">바나나시스템 3.0<br />CSM UI/UX</h3>
 
@@ -396,20 +467,27 @@
             <div class="project__footer">
               <span>2023 – 2024</span>
               <span>Frontend · UI/UX</span>
-              <span class="project__cta">View Project →</span>
+              <a
+                href="https://www.figma.com/design/0eWkl33dQqEhLiKIpA4QKO/Banana-System?node-id=0-1&t=QticDEtdcmS69jdq-1"
+                target="_blank"
+                class="project__cta"
+                >View Project →</a
+              >
             </div>
           </div>
 
           <div class="project__visual">
             <div class="project__image-wrap">
-              <img
-                src="https://placehold.co/900x650/1a1a1a/444444?text=CSM+System"
-                alt="통신사 고객관리 시스템 UI/UX"
-                loading="lazy"
-              />
+              <div class="project__image-box">
+                <img
+                  src="/images/banana.jpg"
+                  alt="통신사 고객관리 시스템 UI/UX"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-        </a>
+        </div>
       </section>
 
       <!-- ============================================================
@@ -426,6 +504,20 @@
 
         <!-- Numbered list -->
         <ul class="works__list">
+          <li class="works__item reveal-item">
+            <span class="works__idx">00</span>
+            <div class="works__body">
+              <h4 class="works__name">국민카드 라이프샵 프로모션 페이지</h4>
+              <p class="works__detail">
+                콘텐츠 기획 및 프로모션 페이지 디자인 · 고객 유입률 향상
+              </p>
+            </div>
+            <div class="works__meta">
+              <span class="works__client">(주)유비템즈</span>
+              <span class="works__year">2019–2022</span>
+              <span class="works__type">Promotion UI</span>
+            </div>
+          </li>
           <li class="works__item reveal-item">
             <span class="works__idx">01</span>
             <div class="works__body">
@@ -549,6 +641,11 @@
           </div>
           <div class="archive__grid" id="archiveGrid">
             <!-- JS가 카드를 렌더링합니다 -->
+          </div>
+          <div class="archive__actions">
+            <button class="archive__toggle" id="archiveToggle" type="button">
+              View More
+            </button>
           </div>
         </div>
       </section>

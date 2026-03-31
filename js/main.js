@@ -81,6 +81,43 @@ const WORKS = [
 
   /* ── Archive ── */
   {
+    id:            'cheoncheonrak-leaflet',
+    category:      'design',
+    categoryLabel: 'Branding',
+    title:         '천천락 여행 리플렛',
+    subtitle:      '다국어 여행 상품 홍보 콘텐츠',
+    year:          '2026',
+    thumbnail:     'ttr_leaftlet.jpg',
+    desc:          '중국인 관광객 대상 여행 상품 리플렛 디자인 및 다국어 콘텐츠 구성으로 오프라인 유입 및 예약 전환 유도',
+    link:          'ttr_leaftlet.jpg',
+    featured:      false
+  },
+  
+  {
+    id:            'cheoncheonrak-banner',
+    category:      'design',
+    categoryLabel: 'Promotion',
+    title:         '천천락 여행 실내 배너',
+    subtitle:      '오프라인 광고 · 브랜드 프로모션',
+    year:          '2026',
+    thumbnail:     'ttr_banner.png',
+    desc:          '여행 상품 홍보용 실내 배너 디자인으로 브랜드 아이덴티티를 반영하고 현장 고객 유입 및 관심 유도',
+    link:          'ttr_banner.png',
+    featured:      false
+  },
+  {
+    id:            'kookmin-card',
+    category:      'design',
+    categoryLabel: 'UI Design',
+    title:         '국민카드 라이프샵 프로모션',
+    subtitle:      '콘텐츠 기획 및 프로모션 UI',
+    year:          '2021',
+    thumbnail:     'https://placehold.co/600x450/d8d4cf/888888?text=Kookmin+Card',
+    desc:          '프로모션 페이지 디자인 및 콘텐츠 기획으로 고객 유입률 향상',
+    link:          '#',
+    featured:      false
+  },
+  {
     id:            'kookmin-card',
     category:      'design',
     categoryLabel: 'UI Design',
@@ -200,6 +237,10 @@ const CATEGORIES = [
   { id: 'brand',      label: 'Brand' }
 ];
 
+const ARCHIVE_MOBILE_INITIAL_COUNT = 6;
+let currentArchiveFilter = 'all';
+let isArchiveExpanded = false;
+
 
 /* ================================================================
    02. GALLERY RENDER
@@ -220,13 +261,16 @@ function renderFeatured() {
   const inner = document.createElement('div');
   inner.className = 'works__gallery';
 
-  inner.innerHTML = items.map((w, i) => `
-    <a href="${escHtml(w.link)}"
+  inner.innerHTML = items.map((w, i) => {
+    const thumbSrc = resolveAssetPath(w.thumbnail);
+    const linkHref = resolveAssetPath(w.link);
+    return `
+    <a href="${escHtml(linkHref)}"
        target="_blank" rel="noopener noreferrer"
        class="gcard${i === 0 ? ' gcard--lg' : ''}"
        aria-label="${escHtml(w.title)} 보기">
       <div class="gcard__img">
-        <img src="${escHtml(w.thumbnail)}" alt="${escHtml(w.title)}" loading="lazy">
+        <img src="${escHtml(thumbSrc)}" alt="${escHtml(w.title)}" loading="lazy">
       </div>
       <div class="gcard__base">
         <span>${escHtml(w.categoryLabel)}</span>
@@ -239,7 +283,8 @@ function renderFeatured() {
         <span class="gcard__cta">View Project →</span>
       </div>
     </a>
-  `).join('');
+  `;
+  }).join('');
 
   container.appendChild(inner);
 }
@@ -263,23 +308,67 @@ function renderFilters() {
     if (!btn) return;
     container.querySelectorAll('.arc-filter').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    renderArchive(btn.dataset.filter);
+    currentArchiveFilter = btn.dataset.filter;
+    isArchiveExpanded = false;
+    renderArchive(currentArchiveFilter);
   });
+}
+
+function updateArchiveToggle(totalCount) {
+  const toggleBtn = document.getElementById('archiveToggle');
+  const grid = document.getElementById('archiveGrid');
+  if (!toggleBtn) return;
+  if (!grid) return;
+
+  const initialCount = getArchiveInitialCount(grid);
+
+  if (totalCount <= initialCount) {
+    toggleBtn.hidden = true;
+    return;
+  }
+
+  toggleBtn.hidden = false;
+  toggleBtn.textContent = isArchiveExpanded ? 'Show Less' : 'View More';
+}
+
+function bindArchiveToggle() {
+  const toggleBtn = document.getElementById('archiveToggle');
+  if (!toggleBtn) return;
+
+  toggleBtn.addEventListener('click', () => {
+    isArchiveExpanded = !isArchiveExpanded;
+    renderArchive(currentArchiveFilter, false);
+  });
+}
+
+function getArchiveInitialCount(grid) {
+  if (window.innerWidth < 1024) return ARCHIVE_MOBILE_INITIAL_COUNT;
+
+  const gridStyles = window.getComputedStyle(grid);
+  const columnCount = gridStyles.gridTemplateColumns
+    .split(' ')
+    .filter(Boolean)
+    .length;
+
+  return Math.max(1, columnCount);
 }
 
 /**
  * 개별 아카이브 카드 HTML 생성
  */
 function createArcCardHTML(w, i) {
+  const thumbSrc = resolveAssetPath(w.thumbnail);
+  const linkHref = resolveAssetPath(w.link);
+
   return `
-    <a href="${escHtml(w.link)}"
+    <a href="${escHtml(linkHref)}"
        target="_blank" rel="noopener noreferrer"
        class="arc-card${w.featured ? ' arc-card--featured' : ''}"
        data-category="${escHtml(w.category)}"
        style="animation-delay:${i * 55}ms"
        aria-label="${escHtml(w.title)} 보기">
       <div class="arc-card__thumb">
-        <img src="${escHtml(w.thumbnail)}" alt="${escHtml(w.title)}" loading="lazy">
+        <img src="${escHtml(thumbSrc)}" alt="${escHtml(w.title)}" loading="lazy">
         <div class="arc-card__over">
           <span class="arc-card__cta">View Project →</span>
         </div>
@@ -305,9 +394,18 @@ function renderArchive(filter = 'all', animate = true) {
   const grid = document.getElementById('archiveGrid');
   if (!grid) return;
 
-  const items = filter === 'all'
+  currentArchiveFilter = filter;
+
+  const filteredItems = filter === 'all'
     ? WORKS
     : WORKS.filter(w => w.category === filter);
+
+  const initialCount = getArchiveInitialCount(grid);
+  const items = isArchiveExpanded
+    ? filteredItems
+    : filteredItems.slice(0, initialCount);
+
+  updateArchiveToggle(filteredItems.length);
 
   const doRender = () => {
     grid.innerHTML = items.length
@@ -346,24 +444,90 @@ function escHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+/**
+ * public/images 파일명을 실제 접근 경로로 변환
+ * - 'foo.jpg' -> '/images/foo.jpg'
+ * - '/images/foo.jpg', 'http...', '#', 'mailto:' 등은 그대로 유지
+ */
+function resolveAssetPath(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '#';
+  if (
+    raw === '#' ||
+    raw.startsWith('/') ||
+    raw.startsWith('http://') ||
+    raw.startsWith('https://') ||
+    raw.startsWith('mailto:') ||
+    raw.startsWith('tel:')
+  ) {
+    return raw;
+  }
+
+  if (/\.(png|jpe?g|webp|gif|svg)$/i.test(raw)) {
+    return `/images/${raw}`;
+  }
+  return raw;
+}
+
 
 /* ================================================================
    03. PAGE LOADER
    ================================================================ */
 
+const pageLoader = document.getElementById('pageLoader');
+const pageLoaderFill = document.getElementById('pageLoaderFill');
+const pageLoaderPercent = document.getElementById('pageLoaderPercent');
+let loaderProgress = 0;
+let loaderTimer = null;
+
+function setLoaderProgress(value) {
+  if (!pageLoaderFill || !pageLoaderPercent) return;
+  loaderProgress = Math.max(loaderProgress, Math.min(100, value));
+  pageLoaderFill.style.width = `${loaderProgress}%`;
+  pageLoaderPercent.textContent = `${Math.round(loaderProgress)}%`;
+}
+
+function startLoaderProgress() {
+  if (!pageLoaderFill || !pageLoaderPercent) return;
+  if (loaderTimer) return;
+
+  loaderTimer = window.setInterval(() => {
+    if (loaderProgress >= 92) return;
+    const step = Math.max(0.8, (92 - loaderProgress) * 0.08);
+    setLoaderProgress(loaderProgress + step);
+  }, 90);
+}
+
+function finishLoader() {
+  if (loaderTimer) {
+    clearInterval(loaderTimer);
+    loaderTimer = null;
+  }
+  setLoaderProgress(100);
+  window.setTimeout(() => {
+    pageLoader?.classList.add('hidden');
+  }, 320);
+}
+
+startLoaderProgress();
+
 window.addEventListener('load', () => {
   /* 갤러리 렌더링을 먼저 수행하여 IntersectionObserver가 잡을 수 있게 */
   renderFeatured();
   renderFilters();
+  bindArchiveToggle();
   renderArchive('all', false);  /* 첫 로드는 애니메이션 없이 */
 
   /* Reveal Observer 초기화 후 관찰 시작 */
   initRevealObserver();
 
   /* 로더 숨기기 */
-  setTimeout(() => {
-    document.getElementById('pageLoader')?.classList.add('hidden');
-  }, 700);
+  finishLoader();
+});
+
+window.addEventListener('resize', () => {
+  if (isArchiveExpanded) return;
+  renderArchive(currentArchiveFilter, false);
 });
 
 
