@@ -318,82 +318,44 @@
       </ul>
 
       <!--
-        ┌───────────────────────────────────────────────────────┐
-        │  인터랙티브 갤러리 카드                                   │
-        │  교체 방법:                                             │
-        │    href=""          → 실제 프로젝트 URL로 교체            │
-        │    img src=""       → 실제 이미지 경로로 교체             │
-        │    gcard__title     → 프로젝트명 교체                    │
-        │    gcard__desc      → 설명 교체                         │
-        │    gcard__tag/year  → 카테고리·연도 교체                 │
-        └───────────────────────────────────────────────────────┘
+        ================================================
+        Featured works + All archive
+        → js/main.js 의 WORKS 배열에서 JS가 렌더링합니다.
+
+        작업물 추가 방법:
+          main.js 상단 WORKS 배열에 객체 하나 추가하면
+          카드가 자동으로 생성됩니다.
+
+          {
+            id:            'my-project',           // 고유 ID
+            category:      'frontend',             // 필터 카테고리
+            categoryLabel: 'Frontend Dev',         // 표시 텍스트
+            title:         '프로젝트명',
+            subtitle:      '부제목',
+            year:          '2024',
+            thumbnail:     'https://placehold.co/...', // 이미지 경로
+            desc:          '짧은 설명',
+            link:          'https://...',          // 외부 링크
+            featured:      false                   // true면 상단 하이라이트
+          }
+        ================================================
       -->
-      <div class="works__gallery reveal-item">
 
-        <!-- Card 01 : Large (좌측 전체 높이) -->
-        <a href="#"
-           target="_blank" rel="noopener noreferrer"
-           class="gcard gcard--lg"
-           aria-label="HDC 오일뱅크 인벤토리 보기">
-          <div class="gcard__img">
-            <img src="https://placehold.co/800x600/d0cec9/888888?text=Project+Visual"
-                 alt="HDC 오일뱅크 인벤토리" loading="lazy" />
-          </div>
-          <div class="gcard__base">
-            <span>Project Visual</span>
-            <span>2020</span>
-          </div>
-          <div class="gcard__over">
-            <span class="gcard__tag">Project Visual</span>
-            <h4 class="gcard__title">HDC 오일뱅크<br>인벤토리</h4>
-            <p class="gcard__desc">브랜드 가시성과 홍보 효과를 위한 메인 인벤토리 배너 설계 및 제작</p>
-            <span class="gcard__cta">View Project →</span>
-          </div>
-        </a>
+      <!-- ① Featured 하이라이트 — JS 렌더링 영역 -->
+      <div id="worksFeatured"></div>
 
-        <!-- Card 02 -->
-        <a href="#"
-           target="_blank" rel="noopener noreferrer"
-           class="gcard"
-           aria-label="하나카드 이메일 뉴스레터 보기">
-          <div class="gcard__img">
-            <img src="https://placehold.co/600x380/c8c4bf/888888?text=Email+Design"
-                 alt="하나카드 이메일 뉴스레터" loading="lazy" />
+      <!-- ② 전체 아카이브 — JS 렌더링 영역 -->
+      <div class="works__archive-section">
+        <div class="archive__header">
+          <p class="archive__section-label">All Projects</p>
+          <div class="archive__filters" id="archiveFilters">
+            <!-- JS가 필터 버튼을 렌더링합니다 -->
           </div>
-          <div class="gcard__base">
-            <span>Email Design</span>
-            <span>2021</span>
-          </div>
-          <div class="gcard__over">
-            <span class="gcard__tag">Email Design</span>
-            <h4 class="gcard__title">하나카드<br>이메일 뉴스레터</h4>
-            <p class="gcard__desc">포인트몰 고객 참여율 향상을 위한 이메일 레터 시각 디자인</p>
-            <span class="gcard__cta">View Project →</span>
-          </div>
-        </a>
-
-        <!-- Card 03 -->
-        <a href="#"
-           target="_blank" rel="noopener noreferrer"
-           class="gcard"
-           aria-label="피그마 UI 디자인 시스템 보기">
-          <div class="gcard__img">
-            <img src="https://placehold.co/600x340/b8b4af/888888?text=UI+Design"
-                 alt="피그마 UI 디자인 시스템" loading="lazy" />
-          </div>
-          <div class="gcard__base">
-            <span>UI Design</span>
-            <span>2023</span>
-          </div>
-          <div class="gcard__over">
-            <span class="gcard__tag">UI Design</span>
-            <h4 class="gcard__title">피그마<br>디자인 시스템</h4>
-            <p class="gcard__desc">사내 피그마 교육 프로그램 및 UI 컴포넌트 시스템 설계·구축</p>
-            <span class="gcard__cta">View Project →</span>
-          </div>
-        </a>
-
-      </div><!-- /works__gallery -->
+        </div>
+        <div class="archive__grid" id="archiveGrid">
+          <!-- JS가 카드를 렌더링합니다 -->
+        </div>
+      </div>
     </section>
 
     <!-- ============================================================
