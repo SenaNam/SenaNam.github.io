@@ -111,12 +111,22 @@ button { background: none; border: none; font-family: inherit; }
 .section-label {
   display: block;
   font-family: var(--f-body);
-  font-size: 0.82rem;          /* ↑ 0.72 → 0.82 */
-  font-weight: 600;            /* ↑ 500 → 600 */
-  letter-spacing: 0.16em;
+  font-size: 1rem;             /* ↑ 0.82 → 1rem */
+  font-weight: 700;
+  letter-spacing: 0.1em;      /* ↓ 0.16 → 0.1 : 읽히게 */
   text-transform: uppercase;
-  color: var(--c-gray-400);    /* ↑ #888 → #aaa */
+  color: var(--c-gray-400);
 }
+
+/* 어두운 배경 섹션 — 밝게 */
+.projects  .section-label,
+.skills    .section-label,
+.contact   .section-label { color: #c8c8c8; }
+
+/* 밝은 배경 섹션 — 진하게 */
+.about      .section-label,
+.works      .section-label,
+.experience .section-label { color: #555555; }
 
 
 /* ----------------------------------------------------------------
@@ -1101,22 +1111,22 @@ button { background: none; border: none; font-family: inherit; }
 
 .skills__group-title {
   font-family: var(--f-body);
-  font-size: 0.76rem;    /* ↑ */
+  font-size: 0.9rem;     /* ↑ 0.76 → 0.9 */
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.12em; /* ↓ 0.2 → 0.12 : 읽히게 */
   text-transform: uppercase;
-  color: #d0d0d0;        /* ↑ #aaa → #d0d0d0 : 검정 배경에서 확실히 읽히게 */
-  margin-bottom: 32px;
+  color: #e0e0e0;         /* ↑ 더 밝게 */
+  margin-bottom: 36px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .skills__gnum {
-  font-family: var(--f-display);
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: rgba(255,255,255,0.42); /* ↑ 0.1 → 0.42 : 정보로서 읽히게 */
+  font-family: var(--f-body);    /* serif 제거 → sans-serif */
+  font-size: 1.2rem;
+  font-weight: 700;              /* 숫자로서 읽히게 */
+  color: rgba(255,255,255,0.58); /* 더 밝게 */
 }
 
 .skills__list {
@@ -1127,11 +1137,11 @@ button { background: none; border: none; font-family: inherit; }
 
 /* ── 스킬 항목 — color 기반 계층 (opacity 폐기) ── */
 .skills__item {
-  font-family: var(--f-display);
-  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
-  font-weight: 400;      /* ↑ 300 → 400 (Pretendard 대응) */
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-family: var(--f-body);     /* serif 제거 → sans-serif */
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  font-weight: 500;               /* ↑ 400 → 500 */
+  padding: 13px 0;                /* ↑ 10 → 13 : 더 여유있게 */
+  border-bottom: 1px solid rgba(255,255,255,0.09); /* ↑ 구분선 더 보이게 */
   transition: transform var(--t-fast) var(--ease), color var(--t-fast);
   position: relative;
 }
@@ -1168,20 +1178,20 @@ button { background: none; border: none; font-family: inherit; }
 /* ── Certifications — 별도 강조 블록 ── */
 .skills__certs {
   max-width: var(--container);
-  margin: 3px auto 0;   /* 그룹 그리드 바로 아래 3px 간격 */
-  padding: 48px 40px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.025);
+  margin: 28px auto 0;  /* ↑ 3px → 28px : 그룹과 분리 */
+  padding: 52px 48px;   /* ↑ 더 여유 */
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.03);
 }
 
 .skills__certs-label {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.92rem;    /* ↑ 0.72 → 0.92 */
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.12em; /* ↓ 읽히게 */
   text-transform: uppercase;
-  color: var(--c-gray-400);
-  margin-bottom: 24px;
+  color: #c8c8c8;         /* ↑ 밝게 */
+  margin-bottom: 28px;
 }
 
 .skills__certs-row {
@@ -1192,20 +1202,24 @@ button { background: none; border: none; font-family: inherit; }
 
 /* Badge / outlined chip 스타일 */
 .skills__certs-row span {
-  font-size: 0.88rem;    /* ↑ 0.78 → 0.88 */
-  font-weight: 500;
-  color: var(--c-white); /* ↑ #666 → white */
-  padding: 10px 22px;
-  border: 1px solid rgba(255,255,255,0.28);  /* ↑ 0.08 → 0.28 */
+  font-size: 0.96rem;    /* ↑ */
+  font-weight: 600;      /* ↑ */
+  color: var(--c-white);
+  padding: 13px 28px;    /* ↑ */
+  border: 1px solid rgba(255,255,255,0.35);
   background: transparent;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   cursor: default;
-  transition: background var(--t-fast), border-color var(--t-fast);
+  transition:
+    background     var(--t-fast),
+    border-color   var(--t-fast),
+    color          var(--t-fast);
 }
 
 .skills__certs-row span:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.72);
+  color: var(--c-white);
 }
 
 
@@ -1416,28 +1430,28 @@ button { background: none; border: none; font-family: inherit; }
 /* 한글 contact heading → Pretendard */
 .contact__heading {
   font-family: var(--f-body);
-  font-size: clamp(2.4rem, 5.5vw, 5.5rem);
-  font-weight: 300;
-  line-height: 1.2;
+  font-size: clamp(2.2rem, 4.5vw, 4.8rem);
+  font-weight: 400;            /* ↑ 300 → 400 */
+  line-height: 1.3;
   color: var(--c-white);
-  margin: 24px 0 60px;
-  letter-spacing: -0.01em;
+  margin: 28px 0 56px;
+  letter-spacing: -0.02em;
 }
 
 .contact__heading em {
   font-style: italic;
-  color: var(--c-gray-500);
+  color: var(--c-gray-200);   /* ↑ #888 → #d0d0d0 : 다크 배경에서 읽히게 */
 }
 
-.contact__cta { margin-bottom: 64px; }
+.contact__cta { margin-bottom: 48px; }
 
 .contact__email {
   display: inline-flex;
   align-items: center;
   gap: 20px;
-  font-family: var(--f-display);
-  font-size: clamp(1.9rem, 4.2vw, 4.2rem);
-  font-weight: 300;
+  font-family: var(--f-body);   /* serif 제거 → sans-serif */
+  font-size: clamp(1.6rem, 3vw, 3.2rem); /* sans-serif에 맞게 조정 */
+  font-weight: 400;
   color: var(--c-white);
   position: relative;
 }
@@ -1464,30 +1478,38 @@ button { background: none; border: none; font-family: inherit; }
   color: var(--c-white);
 }
 
+/* Contact details → 카드 그리드 */
 .contact__details {
-  display: flex;
-  gap: 52px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.09);
 }
 
 .contact__detail {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+  padding: 28px 32px;
+  background: var(--c-black);
+  transition: background var(--t-fast);
 }
 
+.contact__detail:hover { background: #111111; }
+
 .contact__detail-label {
-  font-size: 0.68rem;
+  font-size: 0.82rem;      /* ↑ 0.68 → 0.82 */
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.12em;  /* ↓ 읽히게 */
   text-transform: uppercase;
-  color: var(--c-gray-600);
+  color: var(--c-gray-400); /* ↑ #666 → #aaa */
 }
 
 .contact__detail span:last-child {
-  font-size: 0.92rem;    /* ↑ 0.88 → 0.92 */
-  font-weight: 400;      /* ↑ 300 → 400 */
-  color: var(--c-gray-200);  /* ↑ #bbb → #d0d0d0 */
+  font-size: 1.06rem;      /* ↑ 0.92 → 1.06 */
+  font-weight: 500;        /* ↑ 400 → 500 */
+  color: var(--c-white);   /* ↑ full white */
 }
 
 
@@ -1568,6 +1590,8 @@ button { background: none; border: none; font-family: inherit; }
   }
 
   .gcard--lg { grid-row: span 1; }
+
+  .contact__details { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -1597,7 +1621,7 @@ button { background: none; border: none; font-family: inherit; }
 
   .gcard--lg { grid-row: span 1; }
 
-  .contact__details { flex-direction: column; gap: 24px; }
+  .contact__details { grid-template-columns: 1fr; }
 
   .experience__timeline::before { display: none; }
 
@@ -1640,7 +1664,9 @@ button { background: none; border: none; font-family: inherit; }
 
   .footer { flex-direction: column; gap: 8px; text-align: center; }
 
-  .skills__certs { padding: 32px 24px; }
+  .skills__certs { padding: 36px 28px; }
+
+  .contact__detail { padding: 22px 24px; }
 }
 
 @media (min-width: 641px) {
