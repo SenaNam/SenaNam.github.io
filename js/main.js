@@ -59,7 +59,7 @@ if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
 
   // Hover states
   const hoverTargets = document.querySelectorAll(
-    'a, button, .works__item, .skills__item, .mosaic__item, .project'
+    'a, button, .works__item, .skills__item, .gcard, .project'
   );
   hoverTargets.forEach(el => {
     el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));

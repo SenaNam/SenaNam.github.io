@@ -7,7 +7,8 @@
   <meta name="description" content="디자인 감각과 기술적 구현력을 갖춘 프론트엔드 개발자 남세나의 포트폴리오" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -316,21 +317,83 @@
         </li>
       </ul>
 
-      <!-- Mosaic image grid -->
-      <div class="works__mosaic reveal-item">
-        <div class="mosaic__item mosaic__item--lg">
-          <img src="https://placehold.co/700x500/d0cec9/888888?text=Project+Visual" alt="HDC 오일뱅크 인벤토리" loading="lazy" />
-          <div class="mosaic__caption"><span>HDC 오일뱅크 인벤토리</span><span>2020</span></div>
-        </div>
-        <div class="mosaic__item">
-          <img src="https://placehold.co/400x350/c8c4bf/888888?text=Email+Design" alt="이메일 뉴스레터" loading="lazy" />
-          <div class="mosaic__caption"><span>이메일 뉴스레터</span><span>2021</span></div>
-        </div>
-        <div class="mosaic__item">
-          <img src="https://placehold.co/400x300/b8b4af/888888?text=UI+Design" alt="피그마 디자인 교육" loading="lazy" />
-          <div class="mosaic__caption"><span>피그마 디자인 교육</span><span>2023</span></div>
-        </div>
-      </div>
+      <!--
+        ┌───────────────────────────────────────────────────────┐
+        │  인터랙티브 갤러리 카드                                   │
+        │  교체 방법:                                             │
+        │    href=""          → 실제 프로젝트 URL로 교체            │
+        │    img src=""       → 실제 이미지 경로로 교체             │
+        │    gcard__title     → 프로젝트명 교체                    │
+        │    gcard__desc      → 설명 교체                         │
+        │    gcard__tag/year  → 카테고리·연도 교체                 │
+        └───────────────────────────────────────────────────────┘
+      -->
+      <div class="works__gallery reveal-item">
+
+        <!-- Card 01 : Large (좌측 전체 높이) -->
+        <a href="#"
+           target="_blank" rel="noopener noreferrer"
+           class="gcard gcard--lg"
+           aria-label="HDC 오일뱅크 인벤토리 보기">
+          <div class="gcard__img">
+            <img src="https://placehold.co/800x600/d0cec9/888888?text=Project+Visual"
+                 alt="HDC 오일뱅크 인벤토리" loading="lazy" />
+          </div>
+          <div class="gcard__base">
+            <span>Project Visual</span>
+            <span>2020</span>
+          </div>
+          <div class="gcard__over">
+            <span class="gcard__tag">Project Visual</span>
+            <h4 class="gcard__title">HDC 오일뱅크<br>인벤토리</h4>
+            <p class="gcard__desc">브랜드 가시성과 홍보 효과를 위한 메인 인벤토리 배너 설계 및 제작</p>
+            <span class="gcard__cta">View Project →</span>
+          </div>
+        </a>
+
+        <!-- Card 02 -->
+        <a href="#"
+           target="_blank" rel="noopener noreferrer"
+           class="gcard"
+           aria-label="하나카드 이메일 뉴스레터 보기">
+          <div class="gcard__img">
+            <img src="https://placehold.co/600x380/c8c4bf/888888?text=Email+Design"
+                 alt="하나카드 이메일 뉴스레터" loading="lazy" />
+          </div>
+          <div class="gcard__base">
+            <span>Email Design</span>
+            <span>2021</span>
+          </div>
+          <div class="gcard__over">
+            <span class="gcard__tag">Email Design</span>
+            <h4 class="gcard__title">하나카드<br>이메일 뉴스레터</h4>
+            <p class="gcard__desc">포인트몰 고객 참여율 향상을 위한 이메일 레터 시각 디자인</p>
+            <span class="gcard__cta">View Project →</span>
+          </div>
+        </a>
+
+        <!-- Card 03 -->
+        <a href="#"
+           target="_blank" rel="noopener noreferrer"
+           class="gcard"
+           aria-label="피그마 UI 디자인 시스템 보기">
+          <div class="gcard__img">
+            <img src="https://placehold.co/600x340/b8b4af/888888?text=UI+Design"
+                 alt="피그마 UI 디자인 시스템" loading="lazy" />
+          </div>
+          <div class="gcard__base">
+            <span>UI Design</span>
+            <span>2023</span>
+          </div>
+          <div class="gcard__over">
+            <span class="gcard__tag">UI Design</span>
+            <h4 class="gcard__title">피그마<br>디자인 시스템</h4>
+            <p class="gcard__desc">사내 피그마 교육 프로그램 및 UI 컴포넌트 시스템 설계·구축</p>
+            <span class="gcard__cta">View Project →</span>
+          </div>
+        </a>
+
+      </div><!-- /works__gallery -->
     </section>
 
     <!-- ============================================================
@@ -348,10 +411,10 @@
             <span class="skills__gnum">01</span>Frontend
           </h3>
           <ul class="skills__list">
-            <li class="skills__item" data-level="expert">HTML5</li>
-            <li class="skills__item" data-level="expert">CSS3 / SCSS</li>
-            <li class="skills__item" data-level="expert">JavaScript (ES6+)</li>
-            <li class="skills__item" data-level="advanced">React</li>
+            <li class="skills__item" data-level="expert" data-core="true">HTML5</li>
+            <li class="skills__item" data-level="expert" data-core="true">CSS3 / SCSS</li>
+            <li class="skills__item" data-level="expert" data-core="true">JavaScript (ES6+)</li>
+            <li class="skills__item" data-level="advanced" data-core="true">React</li>
             <li class="skills__item" data-level="advanced">jQuery</li>
             <li class="skills__item" data-level="intermediate">JSP · Servlet · Ajax</li>
           </ul>
@@ -362,7 +425,7 @@
             <span class="skills__gnum">02</span>Design
           </h3>
           <ul class="skills__list">
-            <li class="skills__item" data-level="expert">Figma</li>
+            <li class="skills__item" data-level="expert" data-core="true">Figma</li>
             <li class="skills__item" data-level="expert">Adobe Photoshop</li>
             <li class="skills__item" data-level="expert">Adobe Illustrator</li>
             <li class="skills__item" data-level="advanced">UI/UX Design</li>
@@ -376,8 +439,8 @@
             <span class="skills__gnum">03</span>Backend / DB
           </h3>
           <ul class="skills__list">
-            <li class="skills__item" data-level="intermediate">Java</li>
-            <li class="skills__item" data-level="intermediate">Spring Boot</li>
+            <li class="skills__item" data-level="intermediate" data-core="true">Java</li>
+            <li class="skills__item" data-level="intermediate" data-core="true">Spring Boot</li>
             <li class="skills__item" data-level="intermediate">Node.js</li>
             <li class="skills__item" data-level="intermediate">Oracle · MongoDB</li>
             <li class="skills__item" data-level="beginner">Spring Security</li>
