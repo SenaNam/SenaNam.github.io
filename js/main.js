@@ -14,7 +14,9 @@
    08. Scroll Reveal
    09. Skills hover
    10. Hero parallax
-   11. Smooth scroll
+   11. Project gallery (썸네일 → 대표 이미지)
+   12. Project image modal (메인 이미지 확대)
+   13. Smooth scroll
 
    ================================================================ */
 
@@ -762,7 +764,166 @@ if (heroSection && heroTitle) {
 
 
 /* ================================================================
-   11. SMOOTH SCROLL
+   11. PROJECT GALLERY — 메인 이미지 + 썸네일 전환
+   ================================================================ */
+
+function initProjectGalleries() {
+  document.querySelectorAll('[data-project-gallery]').forEach(gallery => {
+    const mainImg = gallery.querySelector('.project__main-img');
+    const track = gallery.querySelector('.project__thumbs');
+    const prev = gallery.querySelector('.project__thumbs-nav--prev');
+    const next = gallery.querySelector('.project__thumbs-nav--next');
+    const thumbs = gallery.querySelectorAll('.project__thumb');
+    if (!mainImg || !track || !thumbs.length) return;
+
+    function updateNav() {
+      const { scrollLeft, scrollWidth, clientWidth } = track;
+      const eps = 4;
+      const canPrev = scrollLeft > eps;
+      const canNext = scrollLeft + clientWidth < scrollWidth - eps;
+      if (prev) {
+        prev.disabled = !canPrev;
+        prev.classList.toggle('is-disabled', !canPrev);
+        prev.setAttribute('aria-disabled', canPrev ? 'false' : 'true');
+      }
+      if (next) {
+        next.disabled = !canNext;
+        next.classList.toggle('is-disabled', !canNext);
+        next.setAttribute('aria-disabled', canNext ? 'false' : 'true');
+      }
+    }
+
+    function scrollThumbs(dir) {
+      const step = Math.max(200, Math.floor(track.clientWidth * 0.62));
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
+
+    prev?.addEventListener('click', e => {
+      e.preventDefault();
+      if (prev.disabled) return;
+      scrollThumbs(-1);
+    });
+    next?.addEventListener('click', e => {
+      e.preventDefault();
+      if (next.disabled) return;
+      scrollThumbs(1);
+    });
+
+    track.addEventListener('scroll', updateNav, { passive: true });
+
+    let resizeT = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(updateNav, 80);
+    });
+
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(() => updateNav());
+      ro.observe(track);
+    }
+
+    gallery.querySelectorAll('img').forEach(img => {
+      img.addEventListener('load', updateNav);
+    });
+
+    thumbs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const src = btn.getAttribute('data-full-src');
+        const alt = btn.getAttribute('data-full-alt') || '';
+        if (!src) return;
+
+        mainImg.src = src;
+        mainImg.alt = alt;
+
+        thumbs.forEach(t => {
+          const on = t === btn;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+        requestAnimationFrame(updateNav);
+      });
+    });
+
+    updateNav();
+  });
+}
+
+initProjectGalleries();
+
+
+/* ================================================================
+   12. PROJECT IMAGE MODAL — 메인 스크린샷 클릭 시 확대
+   ================================================================ */
+
+function initProjectImageModal() {
+  const modal = document.getElementById('projectImgModal');
+  const modalImg = document.getElementById('projectImgModalImg');
+  const projects = document.querySelector('.projects');
+  if (!modal || !modalImg || !projects) return;
+
+  let lastFocus = null;
+
+  function openModal(src, alt) {
+    if (!src) return;
+    lastFocus = document.activeElement;
+    modalImg.src = src;
+    modalImg.alt = alt || '';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('project-img-modal-open');
+
+    const closeBtn = modal.querySelector('.project-img-modal__close');
+    window.setTimeout(() => {
+      closeBtn?.focus({ preventScroll: true });
+    }, 0);
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('project-img-modal-open');
+    modalImg.src = '';
+    modalImg.alt = '';
+
+    if (lastFocus && typeof lastFocus.focus === 'function') {
+      lastFocus.focus({ preventScroll: true });
+    }
+    lastFocus = null;
+  }
+
+  projects.addEventListener('click', e => {
+    const el = e.target;
+    if (!(el instanceof Element)) return;
+    const main = el.closest('.project__main-img');
+    if (!main) return;
+    e.preventDefault();
+    const src = main.currentSrc || main.getAttribute('src') || '';
+    const alt = main.getAttribute('alt') || '';
+    openModal(src, alt);
+  });
+
+  modal.addEventListener('click', e => {
+    const t = e.target;
+    if (!(t instanceof Element)) return;
+    if (t.closest('[data-project-img-modal-close]')) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('is-open')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeModal();
+    }
+  });
+}
+
+initProjectImageModal();
+
+
+/* ================================================================
+   13. SMOOTH SCROLL
    ================================================================ */
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

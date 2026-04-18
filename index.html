@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sena2026 — Frontend Developer</title>
+    <title>Sena2026 — Full-Stack Web Developer</title>
     <meta
       name="description"
-      content="디자인 감각과 기술적 구현력을 갖춘 프론트엔드 개발자 남세나의 포트폴리오"
+      content="디자인 감각과 프론트·백엔드 구현력을 겸비한 풀스택 웹 개발자 남세나의 포트폴리오"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -124,7 +124,7 @@
       <section class="hero" id="hero">
         <div class="hero__content">
           <span class="hero__eyebrow"
-            >Frontend-Centered Developer with Backend Experience</span
+            >Full-Stack Web Developer with a Design Background</span
           >
           <h1 class="hero__title">
             <span class="hero__line hero__line--1">DESIGN</span>
@@ -132,7 +132,7 @@
             <span class="hero__line hero__line--3">CODE</span>
           </h1>
           <div class="hero__sub">
-            <p>디자인 감각과 기술적 구현력을 모두 갖춘</p>
+            <p>디자인 감각과 프론트·백엔드 구현력을 모두 갖춘</p>
             <p class="hero__name">남세나 <span>/ Nam Sena</span></p>
           </div>
         </div>
@@ -148,8 +148,8 @@
               <span>Design Experience</span>
             </div>
             <div class="hero__stat">
-              <strong>Frontend + Backend</strong>
-              <span>Practical Development</span>
+              <strong>Full-Stack</strong>
+              <span>End-to-End Delivery</span>
             </div>
           </div>
         </div>
@@ -265,19 +265,220 @@
             <span class="section-label__num">03</span>
             <span class="section-label__text">PROJECTS</span>
           </p>
-          <p class="projects__header-title">Selected<br /><em>Works</em></p>
+          <h2 class="projects__header-title">Selected<br /><em>Works</em></h2>
         </div>
 
         <!-- Project 01 -->
         <div class="project project--left reveal-item">
-          <div class="project__visual">
-            <div class="project__image-wrap">
-              <div class="project__image-box">
-                <img
-                  src="/images/ttr.jpg"
-                  alt="천천락 다국어 여행 예약 서비스"
-                  loading="lazy"
-                />
+          <div class="project__visual project__visual--gallery">
+            <div class="project__gallery" data-project-gallery>
+              <div class="project__image-wrap">
+                <div class="project__image-box">
+                  <img
+                    class="project__main-img"
+                    src="/images/ttr.jpg"
+                    alt="천천락 다국어 여행 예약 서비스"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="project__thumbs-wrap">
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--prev"
+                  aria-label="썸네일 이전"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div
+                  class="project__thumbs"
+                  role="tablist"
+                  aria-label="천천락 서비스 스크린샷"
+                >
+                  <button
+                    type="button"
+                    class="project__thumb is-active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-label="대표 화면 1"
+                    data-full-src="/images/ttr.jpg"
+                    data-full-alt="천천락 다국어 여행 예약 서비스"
+                  >
+                    <img src="/images/ttr.jpg" alt="" />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 2 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/252525/8a8a8a?text=02"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/252525/8a8a8a?text=02"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 3 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/1f1f1f/7a7a7a?text=03"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/1f1f1f/7a7a7a?text=03"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 4 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/2a2520/8f8a85?text=04"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/2a2520/8f8a85?text=04"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 5 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/22282e/8a9098?text=05"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/22282e/8a9098?text=05"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 6 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/2e2522/9a8880?text=06"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/2e2522/9a8880?text=06"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 7 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/25222e/9088a0?text=07"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/25222e/9088a0?text=07"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 8 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/1a2a1f/7a9078?text=08"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/1a2a1f/7a9078?text=08"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 9 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/2a1f28/9a8090?text=09"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/2a1f28/9a8090?text=09"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 10 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/201f2a/8888a0?text=10"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/201f2a/8888a0?text=10"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 11 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/2a2a20/9a9a78?text=11"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/2a2a20/9a9a78?text=11"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 12 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/26201a/9a9080?text=12"
+                    data-full-alt="천천락 서비스 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/26201a/9a9080?text=12"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--next"
+                  aria-label="썸네일 다음"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
               </div>
             </div>
           </div>
@@ -315,7 +516,7 @@
               <span>2026</span>
               <span>Full-Stack Development</span>
               <a
-                href="https://ddftravel.co.kr/event/kor_2026_s1"
+                href="https://ttr-user.sen404.dev/event/kor_2026_s1"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="project__cta"
@@ -326,14 +527,155 @@
         </div>
         <!-- Project 02 -->
         <div class="project project--left reveal-item">
-          <div class="project__visual">
-            <div class="project__image-wrap">
-              <div class="project__image-box">
-                <img
-                  src="/images/paygos.jpg"
-                  alt="IBK Paygos 정산 및 수출 데이터 관리 시스템"
-                  loading="lazy"
-                />
+          <div class="project__visual project__visual--gallery">
+            <div class="project__gallery" data-project-gallery>
+              <div class="project__image-wrap">
+                <div class="project__image-box">
+                  <img
+                    class="project__main-img"
+                    src="/images/paygos.jpg"
+                    alt="IBK Paygos 정산 및 수출 데이터 관리 시스템"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="project__thumbs-wrap">
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--prev"
+                  aria-label="썸네일 이전"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div
+                  class="project__thumbs"
+                  role="tablist"
+                  aria-label="Paygos 스크린샷"
+                >
+                  <button
+                    type="button"
+                    class="project__thumb is-active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-label="대표 화면 1"
+                    data-full-src="/images/paygos.jpg"
+                    data-full-alt="IBK Paygos 정산 및 수출 데이터 관리 시스템"
+                  >
+                    <img src="/images/paygos.jpg" alt="" />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 2 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/1a1f28/8890a0?text=P+02"
+                    data-full-alt="Paygos 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/1a1f28/8890a0?text=02"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 3 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/1f2420/8a9888?text=P+03"
+                    data-full-alt="Paygos 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/1f2420/8a9888?text=03"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 4 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/241a1a/9a8888?text=P+04"
+                    data-full-alt="Paygos 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/241a1a/9a8888?text=04"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 5 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/1a2228/8898a8?text=P+05"
+                    data-full-alt="Paygos 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/1a2228/8898a8?text=05"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 6 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/222018/9a9080?text=P+06"
+                    data-full-alt="Paygos 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/222018/9a9080?text=06"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 7 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/181f22/809098?text=P+07"
+                    data-full-alt="Paygos 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/181f22/809098?text=07"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 8 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/201a24/9088a0?text=P+08"
+                    data-full-alt="Paygos 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/201a24/9088a0?text=08"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--next"
+                  aria-label="썸네일 다음"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
               </div>
             </div>
           </div>
@@ -380,16 +722,126 @@
 
         <!-- Project 03 -->
         <div class="project project--left reveal-item">
-          <div class="project__visual">
-            <div class="project__image-wrap">
-              <span class="project__award"> Award · 최우수상 </span>
-
-              <div class="project__image-box">
-                <img
-                  src="/images/baro.jpg"
-                  alt="바로 스탬핑 — QR 기반 적립 및 쿠폰 시스템"
-                  loading="lazy"
-                />
+          <div class="project__visual project__visual--gallery">
+            <div class="project__gallery" data-project-gallery>
+              <div class="project__image-wrap">
+                <span class="project__award"> Award · 최우수상 </span>
+                <div class="project__image-box">
+                  <img
+                    class="project__main-img"
+                    src="/images/baro.jpg"
+                    alt="바로 스탬핑 — QR 기반 적립 및 쿠폰 시스템"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="project__thumbs-wrap">
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--prev"
+                  aria-label="썸네일 이전"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div
+                  class="project__thumbs"
+                  role="tablist"
+                  aria-label="바로 스탬핑 스크린샷"
+                >
+                  <button
+                    type="button"
+                    class="project__thumb is-active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-label="대표 화면 1"
+                    data-full-src="/images/baro.jpg"
+                    data-full-alt="바로 스탬핑 — QR 기반 적립 및 쿠폰 시스템"
+                  >
+                    <img src="/images/baro.jpg" alt="" />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 2 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/1f2820/7a9a88?text=B+02"
+                    data-full-alt="바로 스탬핑 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/1f2820/7a9a88?text=02"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 3 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/281f24/9a8090?text=B+03"
+                    data-full-alt="바로 스탬핑 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/281f24/9a8090?text=03"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 4 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/202428/8898a0?text=B+04"
+                    data-full-alt="바로 스탬핑 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/202428/8898a0?text=04"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 5 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/242018/9a9880?text=B+05"
+                    data-full-alt="바로 스탬핑 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/242018/9a9880?text=05"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 6 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/181c22/8090a0?text=B+06"
+                    data-full-alt="바로 스탬핑 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/181c22/8090a0?text=06"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--next"
+                  aria-label="썸네일 다음"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
               </div>
             </div>
             <!-- <div class="project__badge">최우수상 수상</div> -->
@@ -476,14 +928,125 @@
             </div>
           </div>
 
-          <div class="project__visual">
-            <div class="project__image-wrap">
-              <div class="project__image-box">
-                <img
-                  src="/images/banana.jpg"
-                  alt="통신사 고객관리 시스템 UI/UX"
-                  loading="lazy"
-                />
+          <div class="project__visual project__visual--gallery">
+            <div class="project__gallery" data-project-gallery>
+              <div class="project__image-wrap">
+                <div class="project__image-box">
+                  <img
+                    class="project__main-img"
+                    src="/images/banana.jpg"
+                    alt="통신사 고객관리 시스템 UI/UX"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="project__thumbs-wrap">
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--prev"
+                  aria-label="썸네일 이전"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div
+                  class="project__thumbs"
+                  role="tablist"
+                  aria-label="바나나시스템 CSM 스크린샷"
+                >
+                  <button
+                    type="button"
+                    class="project__thumb is-active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-label="대표 화면 1"
+                    data-full-src="/images/banana.jpg"
+                    data-full-alt="통신사 고객관리 시스템 UI/UX"
+                  >
+                    <img src="/images/banana.jpg" alt="" />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 2 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/222018/9a9888?text=CSM+02"
+                    data-full-alt="바나나시스템 CSM 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/222018/9a9888?text=02"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 3 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/1a2220/889890?text=CSM+03"
+                    data-full-alt="바나나시스템 CSM 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/1a2220/889890?text=03"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 4 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/241a1c/9a8890?text=CSM+04"
+                    data-full-alt="바나나시스템 CSM 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/241a1c/9a8890?text=04"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 5 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/181c20/8090a8?text=CSM+05"
+                    data-full-alt="바나나시스템 CSM 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/181c20/8090a8?text=05"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    class="project__thumb"
+                    role="tab"
+                    aria-selected="false"
+                    aria-label="추가 화면 6 (플레이스홀더)"
+                    data-full-src="https://placehold.co/1600x900/202428/8898a0?text=CSM+06"
+                    data-full-alt="바나나시스템 CSM 추가 화면 (플레이스홀더)"
+                  >
+                    <img
+                      src="https://placehold.co/200x113/202428/8898a0?text=06"
+                      alt=""
+                      loading="lazy"
+                    />
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="project__thumbs-nav project__thumbs-nav--next"
+                  aria-label="썸네일 다음"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1246,9 +1809,47 @@
       </section>
     </main>
 
+    <!-- Projects: 메인 이미지 확대 보기 -->
+    <div
+      class="project-img-modal"
+      id="projectImgModal"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        class="project-img-modal__backdrop"
+        aria-label="이미지 미리보기 닫기"
+        data-project-img-modal-close
+      ></button>
+      <div
+        class="project-img-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="projectImgModalTitle"
+      >
+        <p id="projectImgModalTitle" class="visually-hidden">
+          프로젝트 스크린샷 확대
+        </p>
+        <button
+          type="button"
+          class="project-img-modal__close"
+          aria-label="닫기"
+          data-project-img-modal-close
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+        <img
+          class="project-img-modal__img"
+          id="projectImgModalImg"
+          src=""
+          alt=""
+        />
+      </div>
+    </div>
+
     <footer class="footer">
       <span>© 2025 Nam Sena</span>
-      <span>Frontend Developer × Designer</span>
+      <span>Full-Stack Developer × Designer</span>
     </footer>
 
     <script src="js/main.js"></script>

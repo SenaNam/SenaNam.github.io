@@ -59,6 +59,15 @@
   --container:   1360px;
   --gutter:      clamp(24px, 5vw, 80px);
 
+  /* ─ Spacing (4px 그리드, 카드·프로젝트 블록과 동일 계열) ─ */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  /* 프로젝트 갤러리 메인 프리뷰(모든 작업 동일 비율) */
+  --project-main-aspect: 16 / 9;
+
   /* ─ Motion ─ */
   --ease:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1.0);
@@ -132,6 +141,18 @@ button { background: none; border: none; font-family: inherit; }
   font-size: 2rem;
   font-weight: 700;
   color: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 
@@ -798,10 +819,18 @@ button { background: none; border: none; font-family: inherit; }
   margin-left: calc(var(--gutter) * -1);
   margin-right: calc(var(--gutter) * -1);
   --project-content-pad: clamp(48px, 6vw, 88px);
+  /* 블록마다 리듬 — 붙어 보이지 않게 */
+  padding-block: clamp(40px, 5vw, 72px);
 }
 
 .project + .project {
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* 짝수 번째 작업만 아주 옅은 밴드 (헤더 제외: 2·4번째 자식 = 01·03 프로젝트) */
+.projects > .project:nth-child(even) {
+  background: rgba(255, 255, 255, 0.022);
 }
 
 .project--right {
@@ -888,7 +917,8 @@ button { background: none; border: none; font-family: inherit; }
 }
 
 .project__info {
-  flex: 0 0 44%;
+  flex: 0 1 44%;
+  min-width: 0;
   padding: var(--project-content-pad);
   display: flex;
   flex-direction: column;
@@ -898,7 +928,7 @@ button { background: none; border: none; font-family: inherit; }
 
 .project__index {
   font-family: var(--f-body);
-  font-size: 5.5rem;
+  font-size: clamp(3rem, 12vw, 5.5rem);
   font-weight: 300;
   color: rgba(255,255,255,0.6);
   line-height: 1;
@@ -1005,15 +1035,287 @@ button { background: none; border: none; font-family: inherit; }
 }
 
 .projects .project__visual {
-  flex: 0 0 56%;
+  flex: 0 1 56%;
+  min-width: 0;
   position: relative;
   background: #1a1a1a;
   aspect-ratio: 16 / 9;
 }
 
-.projects .project__image-wrap {
+/* 썸네일까지 포함해 높이가 늘어나야 함 — 고정 16:9 + overflow 시 썸네일이 잘림 */
+.projects .project__visual--gallery {
+  aspect-ratio: unset;
+  height: auto;
+  align-self: flex-start;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 갤러리 없음: 이미지가 비주얼 박스를 채움 */
+.projects .project__visual:not(.project__visual--gallery) .project__image-wrap {
   position: absolute;
   inset: var(--project-content-pad);
+}
+
+/* 대표 이미지 + 바로 아래 썸네일 (absolute + 고정 높이 부모면 하단이 잘림 → 일반 흐름 + 패딩) */
+.projects .project__gallery {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: var(--project-content-pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: var(--space-5);
+  min-height: 0;
+  /* row-reverse 부모와 무관하게 썸네일 스트립은 LTR */
+  direction: ltr;
+}
+
+/* 일반 .project__image-wrap 의 absolute 규칙이 여기 적용되면 안 됨 — 문서 흐름으로 위·아래 쌓기 */
+.projects .project__visual--gallery .project__gallery > .project__image-wrap {
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  /* 너비만 같고 높이가 제각각이던 문제 → 고정 비율 프레임 */
+  aspect-ratio: var(--project-main-aspect);
+}
+
+.projects .project__visual--gallery .project__gallery .project__image-wrap > .project__image-box {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 프레임을 꽉 채움(여백 없음) — 위·가운데 기준으로 잘림 */
+.projects .project__visual--gallery .project__gallery .project__image-box img,
+.projects .project__visual--gallery .project__gallery .project__main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.projects .project__visual--gallery .project__gallery > .project__thumbs-wrap {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-3);
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.projects .project__thumbs {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-2);
+  padding: 2px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  /* 스크롤은 유지, 스크롤바만 숨김 (‹ › 버튼·트랙패드·터치) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.projects .project__thumbs::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.projects .project__thumbs-nav {
+  flex: 0 0 44px;
+  width: 44px;
+  align-self: stretch;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 1;
+  transition:
+    background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease),
+    opacity var(--t-fast) var(--ease);
+}
+
+.projects .project__thumbs-nav span {
+  display: block;
+  margin-top: -2px;
+}
+
+.projects .project__thumbs-nav:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.projects .project__thumbs-nav:disabled,
+.projects .project__thumbs-nav.is-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.projects .project__thumb {
+  flex: 0 0 clamp(56px, 14vw, 88px);
+  width: clamp(56px, 14vw, 88px);
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 2px;
+  background: #111;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.72;
+  transition:
+    border-color var(--t-fast) var(--ease),
+    opacity var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+}
+
+.projects .project__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.projects .project__thumb:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.projects .project__thumb.is-active {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.projects .project__thumb:focus-visible {
+  outline: 2px solid var(--c-white);
+  outline-offset: 2px;
+}
+
+@media (pointer: fine) {
+  .projects .project__thumb { cursor: none; }
+  .projects .project__thumbs-nav:not(:disabled) { cursor: none; }
+  .projects .project__visual--gallery .project__main-img {
+    cursor: zoom-in;
+  }
+}
+
+/* 프로젝트 메인 이미지 — 클릭 시 확대 모달 */
+body.project-img-modal-open {
+  overflow: hidden;
+}
+
+.project-img-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 40px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--t-base) var(--ease),
+    visibility var(--t-base) var(--ease);
+}
+
+.project-img-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.project-img-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+}
+
+.project-img-modal__dialog {
+  position: relative;
+  z-index: 1;
+  max-width: min(96vw, 1440px);
+  max-height: min(92vh, 920px);
+  margin: 0;
+}
+
+.project-img-modal__close {
+  position: absolute;
+  top: clamp(-48px, -5vw, -36px);
+  right: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 2px;
+  background: rgba(18, 18, 18, 0.96);
+  color: var(--c-white);
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+
+.project-img-modal__close:hover {
+  background: rgba(40, 40, 40, 0.98);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.project-img-modal__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(94vw, 1400px);
+  max-height: min(88vh, 880px);
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.55);
+}
+
+@media (pointer: fine) {
+  .project-img-modal button {
+    cursor: pointer;
+  }
 }
 
 /* ----------------------------------------------------------------
@@ -1915,19 +2217,39 @@ button { background: none; border: none; font-family: inherit; }
     flex-direction: column !important;
   }
 
+  /* row-reverse 가 모바일에서 이기지 않도록 (설명·이미지 세로 순서 통일) */
+  .project.project--right {
+    flex-direction: column !important;
+  }
+
+  /* 세로 스택: 01~03도 04와 같이 설명 → 이미지 */
+  .projects .project__info {
+    flex: none;
+    width: 100%;
+    order: 1;
+  }
+
   .projects .project__visual {
     flex: 0 0 56%;
     position: relative;
     background: #1a1a1a;
     aspect-ratio: 16 / 9;
+    order: 2;
+    width: 100%;
+    max-width: 100%;
   }
 
-  .projects .project__image-wrap {
+  .projects .project__visual--gallery {
+    aspect-ratio: unset;
+    height: auto;
+    flex: none;
+    width: 100%;
+  }
+
+  .projects .project__visual:not(.project__visual--gallery) .project__image-wrap {
     position: absolute;
     inset: var(--project-content-pad); /* 🔥 핵심 */
   }
-
-  .project__info { flex: none; width: 100%; }
 
   .works__meta { display: none; }
 
